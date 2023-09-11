@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- style -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- font: Notosans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>Express Cart Dashboard</title>
+</head>
+<body>
+    <!-- header -->
+    <input type="checkbox" id="cart">
+    <label for="cart" class="label-cart"><span class="fas fa-shopping-cart"></span></label>
+
+    <h3 class="logo">Express Cart</h3>
+    <!-- footer design-->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by Express Cart | All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <span class="fas fa-search"></span>
+            <a href="#">Search</a>
+        </div>
+        <div class="sidebar-menu">
+            <span class="fas fa-home"></span>
+            <a href="#">Home</a>
+        </div>
+        <div class="sidebar-menu">
+            <span class="fas fa-truck"></span>
+            <a href="#">Delivery Status</a>
+        </div>
+        <div class="sidebar-menu">
+            <span class="fas fa-user"></span>
+            <a href="#">Account</a>
+        </div>
+        <div class="sidebar-menu">
+            <span class="fas fa-sliders-h"></span>
+            <a href="#">Setting</a>
+        </div>
+    </div>
+    <!-- main dashboard -->
+    <div class="dashboard">
+        <div class="dashboard-banner">
+            <img src="images/images-banner.jpg">
+            <div class="banner-promo">
+                <h1><span>50% OFF</span><br>
+                Fastest Delivery <br> At Your Service </h1>
+            </div>
+        </div>
+
+        <h3 class="dashboard-title">Categories</h3>
+        <div class="dashboard-menu">
+            <a href="#">Clothes</a>
+            <a href="#">Gadget</a>
+            <a href="#">Accessories</a>
+            <a href="#">Beauty</a>
+        </div>
+        
+        <div class="dashboard-content">
+            <div class="dashboard-card">
+                <img class="card-image" src="images/images1.jpg">
+                <div class="card-detail">
+                    <h4>Item Name 1<span>$30</span></h4>
+                    <p>Item Description</p>
+                    <p class="card-time"><span class="fas fa-map-marker-alt"></span> location</p>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <img class="card-image" src="images/images2.jpg">
+                <div class="card-detail">
+                    <h4>Item Name 2<span>$20</span></h4>
+                    <p>Item Descriptions</p>
+                    <p class="card-time"><span class="fas fa-map-marker-alt"></span> location</p>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <img class="card-image" src="images/images3.jpg">
+                <div class="card-detail">
+                    <h4>Item Name 3<span>$45</span></h4>
+                    <p>Item Descriptions</p>
+                    <p class="card-time"><span class="fas fa-map-marker-alt"></span> location</p>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <img class="card-image" src="images/images5.jpg">
+                <div class="card-detail">
+                    <h4>Item Name 4<span>$15</span></h4>
+                    <p>Item Descriptions</p>
+                    <p class="card-time"><span class="fas fa-map-marker-alt"></span> location</p>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <img class="card-image" src="images/images4.jpg">
+                <div class="card-detail">
+                    <h4>Item Name 5<span>$20</span></h4>
+                    <p>Item Descriptions</p>
+                    <p class="card-time"><span class="fas fa-map-marker-alt"></span> location</p>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <img class="card-image" src="images/images6.jpg">
+                <div class="card-detail">
+                    <h4>Item Name 6<span>$20</span></h4>
+                    <p>Item Descriptions</p>
+                    <p class="card-time"><span class="fas fa-map-marker-alt"></span> location</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- order dashboard -->
+    <div class="dashboard-order">
+        <h3>Check Out</h3>
+        <div class="order-address">
+            <p>Address Delivery</p>
+            <h4>123 Aguilar Pangasinan, Philippines</h4>
+        </div>
+        <div class="order-time">
+            <span class="fas fa-clock"></span> 30 mins <span class="fas fa-map-marker-alt"></span>2 km
+        </div>
+
+        <div class="order-wrapper">
+            <div class="order-card">
+                <img class="order-image" src="images/images4.jpg">
+                <div class="order-detail">
+                    <p>Item Name 1</p>
+                    <i class="fas fa-times"></i> <input type="text" value="1">
+                </div>
+                <h4 class="order-price">$20</h4>
+            </div>
+            <div class="order-card">
+                <img class="order-image" src="images/images2.jpg">
+                <div class="order-detail">
+                    <p>Item Name 2</p>
+                    <i class="fas fa-times"></i> <input type="text" value="2">
+                </div>
+                <h4 class="order-price">$40</h4>
+            </div>
+            <div class="order-card">
+                <img class="order-image" src="images/images3.jpg">
+                <div class="order-detail">
+                    <p>Item Name 3</p>
+                    <i class="fas fa-times"></i> <input type="text" value="1">
+                </div>
+                <h4 class="order-price">$45</h4>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        <div class="order-total">
+            <p>Subtotal <span>$105</span></p>
+            <p>Tax (10%) <span>$10.5</span></p>
+            <p>Delivery Fee <span>$5</span></p>
+
+            <!-- <div class="order-promo">
+                <input class="input-promo" type="text" placeholder="Apply Voucher">
+                <button class="button-promo">Redeem</button>
+            </div> -->
+            <hr class="divider">
+            <p>Total <span>$125.5 </span></p>
+        </div>
+        <button class="checkout">
+            Checkout
+        </button>
+    </div>
+
+</body>
+</html>
