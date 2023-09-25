@@ -249,22 +249,6 @@ Version:1.0
 .shop-home-list .shop-section-title {
 	margin-top: 20px;
 }
-.cown-down {
-	height: auto;
-}
-.cown-down .padding-left {
-	padding: 0;
-}
-.cown-down .padding-right {
-	padding: 0;
-}
-.cown-down .content {
-	padding: 50px 110px;
-}
-.cown-down .content .heading-block{
-	padding: 0;
-	position: relative;
-}
 .shop-blog .shop-single-blog {
 	margin-bottom: 30px;
 }
@@ -741,32 +725,6 @@ Version:1.0
 }
 .shop.single .form .form-group button {
 	padding: 14px 40px;
-}
-.cown-down {
-	height: auto;
-}
-.cown-down .content .title {
-	font-size: 22px;
-}
-.cown-down .padding-left {
-	padding: 0;
-}
-.cown-down .padding-right {
-	padding: 0;
-}
-.cown-down .content {
-	padding: 30px 20px;
-}
-.cown-down .content .price {
-	margin-top: 22px;
-	font-size: 28px;
-}
-.cown-down .content .price s {
-	font-size: 20px;
-}
-.cown-down .content .heading-block{
-	padding: 0;
-	position: relative;
 }
 .shop-blog .shop-single-blog {
 	margin-bottom: 30px;
@@ -1344,32 +1302,6 @@ Version:1.0
 	padding: 0;
 	padding: 20px;
 	text-align: center;
-}
-.cown-down {
-	height: auto;
-}
-.cown-down .content .title {
-	font-size: 20px;
-}
-.cown-down .padding-left {
-	padding: 0;
-}
-.cown-down .padding-right {
-	padding: 0;
-}
-.cown-down .content {
-	padding: 30px 20px;
-}
-.cown-down .content .price {
-	margin-top: 22px;
-	font-size: 25px;
-}
-.cown-down .content .price s {
-	font-size: 20px;
-}
-.cown-down .content .heading-block{
-	padding: 0;
-	position: relative;
 }
 .shop-blog .shop-single-blog {
 	margin-bottom: 30px;
