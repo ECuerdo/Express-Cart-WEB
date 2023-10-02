@@ -1214,7 +1214,7 @@ Version:1.0
 }
 .hero-slider .single-slider {
 	height: auto;
-	background-image: url('https://via.placeholder.com/1900x700');
+	background-image: url(images/sale.PNG);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1238,12 +1238,12 @@ Version:1.0
 	font-size: 20px;
 	display: block;
 	margin-bottom: 12px;
-	color: #333;
+	color: #fff;
 	font-weight: 700;
 	line-height: initial;
 }
 .hero-slider .hero-text p {
-	color: #333;
+	color: #fff;
 	margin-bottom: 35px;
 }
 .hero-slider .hero-text .button{
