@@ -10,7 +10,7 @@
 	<!-- Title Tag  -->
     <title>Express Cart</title>
 	<!-- Favicon -->
-	<link rel="icon" type="image/png " href="images/logo1.png">
+	<link rel="icon" type="image/png " href="images/logo.png">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	
@@ -61,7 +61,37 @@
         .main-category.active {
             display: block;
         }
-		
+		    /* Style for the button container */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the button */
+        .add-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Style for the form container */
+        .form-container {
+            text-align: left;
+            padding: 20px;
+        }
+
+        /* Style for the form inputs */
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 	</style>
 	
 </head>
@@ -323,11 +353,31 @@
 							<div class="row">
 								<div class="col-lg-7 col-12">
 									<div class="hero-text">
-										<h1><span>UP TO 50% OFF </span>ON SALE!</h1>
-										<p>Christmas is coming, so get into the holiday spirit! Santa won’t come to town without you. Create your memory with our Christmas sale! Prices are low this Christmas! <br>– Now don’t be slow</p>
+										<h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
+										<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae, a. Corrupti explicabo quibusdam vel quos obcaecati sunt! Totam officiis repellat, assumenda ea corrupti incidunt eaque, ut, perferendis autem nihil animi! <br> lorem ipsum.</p>
 										<div class="button">
 											<a href="#" class="btn">Shop Now!</a>
 										</div>
+	    <div id="popupContainer" class="popup">
+        <div class="popup-content">
+            <span id="popupCloseButton" class="popup-close-button">&times;</span>
+            <h2>Add Product</h2>
+            <form id="productForm" enctype="multipart/form-data" class="form-container">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" class="form-input" required>
+
+                <label for="productPrice">Product Price:</label>
+                <input type="number" id="productPrice" name="productPrice" step="0.01" class="form-input" required>
+
+                <label for="productImage">Product Image:</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" class="form-input" required><br><br>
+
+                <div class="button-container">
+                    <button type="submit" class="add-button">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
 									</div>
 								</div>
 							</div>
@@ -1759,7 +1809,7 @@
 									</h3>
 								</a>
 							</div>
-							<p class="text"> Streamline your shopping experience with Express-Cart we provide so fast! Letting you have a sustainable income. </p>
+							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 							
 						</div>
 						<!-- End Single Widget -->
@@ -1769,11 +1819,11 @@
 						<div class="single-footer links">
 							<h4>Information</h4>
 							<ul>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="about.html">Faq</a></li>
-								<li><a href="policy.html">Terms & Conditions</a></li>
-								<li><a href="contact.html">Contact Us</a></li>
-								<li><a href="contact.html">Help</a></li>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Faq</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Help</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -1787,7 +1837,7 @@
 								<li><a href="#">Money-back</a></li>
 								<li><a href="#">Returns</a></li>
 								<li><a href="#">Shipping</a></li>
-								<li><a href="policy.html">Privacy Policy</a></li>
+								<li><a href="#">Privacy Policy</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -1799,16 +1849,16 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>Philippines</li>
-									<li>Pangasinan</li>
-									<li>support@express-cart.org</li>
-									<li>+6391234567890</li>
+									<li>Street No. and Address</li>
+									<li>Country code and country name</li>
+									<li>info@eshop.com</li>
+									<li>contact number</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
 							<ul>
 								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-linkedin"></i></a></li>
+								<li><a href="#"><i class="ti-twitter"></i></a></li>
 								<li><a href="#"><i class="ti-github"></i></a></li>
 								<li><a href="#"><i class="ti-instagram"></i></a></li>
 							</ul>
@@ -1870,6 +1920,7 @@
 	<script src="js/easing.js"></script>
 	<!-- Active JS -->
 	<script src="js/active.js"></script>
+	<script src="script.js"></script>
 	 <script>
         function toggleMenu(element) {
             var submenu = element.nextElementSibling;
@@ -1895,15 +1946,67 @@
 	<button id="addButton">+</button>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const addButton = document.getElementById('addButton');
+  document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('popupContainer');
+    const closeButton = document.getElementById('popupCloseButton');
+    const productForm = document.getElementById('productForm');
+    const productsList = document.getElementById('productsList');
 
-            addButton.addEventListener('click', function() {
-                // Add your code here to handle the button click event
-                alert('This will be added soon');
-                // You can add more functionality or actions here
-            });
-        });
+    // Function to add a product to the products list
+    function addProductToPage(product) {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        productElement.innerHTML = `
+            <img src="${URL.createObjectURL(product.image)}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>Price: $${product.price.toFixed(2)}</p>
+        `;
+
+        productsList.appendChild(productElement);
+    }
+
+    // Event listener for the close button
+    closeButton.addEventListener('click', () => {
+        // Hide the pop-up
+        popup.style.display = 'none';
+    });
+
+    // Event listener for form submission
+    productForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent the form from submitting
+
+        // Get the product name, price, and image file from the form
+        const productName = document.getElementById('productName').value;
+        const productPrice = document.getElementById('productPrice').value;
+        const productImage = document.getElementById('productImage').files[0]; // Get the first selected file
+
+        // Create a new product object with the data
+        const newProduct = {
+            name: productName,
+            price: parseFloat(productPrice),
+            image: productImage,
+        };
+
+        // You can handle the product data as needed (e.g., add to a list, send to a server, etc.)
+        // Here, we'll simply display the product on the front page using the addProductToPage function
+        addProductToPage(newProduct);
+
+        // Clear the form fields
+        document.getElementById('productName').value = '';
+        document.getElementById('productPrice').value = '';
+        document.getElementById('productImage').value = '';
+
+        // Close the pop-up
+        popup.style.display = 'none';
+    });
+
+    // Trigger the pop-up when your button is clicked
+    const addButton = document.getElementById('addButton'); // Replace with your button's actual ID
+    addButton.addEventListener('click', () => {
+        // Show the pop-up
+        popup.style.display = 'block';
+    });
+});
     </script>
 </body>
 </html>
