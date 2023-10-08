@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
+const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
 const encoder = bodyParser.urlencoded();
 
@@ -42,17 +43,101 @@ app.get("/index",function(req, res) {
 });
 
 // Log in
-app.post("/auth/login",encoder,function (req, res){
+app.post("/auth/login", encoder, function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    db.query("SELECT * FROM user_info WHERE email = ? AND password = ?", [email, password], function(err, result, fields){
-        if(result.length > 0){
-            res.redirect("/index");
+    db.query("SELECT * FROM user_info WHERE email = ?", [email], function (error, result) {
+        if (error) {
+            console.log(error);
         } else {
-            res.render("login", {message: "Incorrect email or password"});
+            if (result.length > 0) {
+                bcrypt.compare(password, result[0].password, (err, isMatch) => {
+                    if (isMatch) {
+                        res.redirect("/index");
+                    } else {
+                        res.render("login", { message: "Incorrect email or password" });
+                    }
+                });
+            } else {
+                res.render("login", { message: "User not found" });
+            }
         }
     });
 });
+
+//change password
+app.get('/changepassword', (req, res) => {
+    res.render('changepassword');
+});
+app.post('/changepassword', (req, res) => {
+    const { email, oldPassword, newPassword, confirmPassword } = req.body;
+
+    // Check if email is provided
+    if (!email) {
+        console.error('Email is missing in the request body.');
+        return res.status(400).render('changepassword', { message: 'Invalid email.' });
+    }
+
+    // Debug: Log email to check its value
+    console.log('Email received:', email);
+
+    // Verify email exists
+    db.query('SELECT * FROM user_info WHERE email = ?', [email], (error, results) => {
+        if (error) {
+            console.error('Database error:', error);
+            return res.status(500).render('changepassword', { message: 'Error occurred. Please try again later.' });
+        }
+
+        if (results.length === 0) {
+            console.error('Email not found in the database:', email);
+            return res.render('changepassword', { message: 'Email not found.' });
+        }
+
+        const user = results[0];
+
+        // Verify old password
+        bcrypt.compare(oldPassword, user.password, (err, isMatch) => {
+            if (err) {
+                console.error('Password comparison error:', err);
+                return res.status(500).render('changepassword', { message: 'Error occurred. Please try again later.' });
+            }
+
+            if (!isMatch) {
+                console.error('Old password is incorrect.');
+                return res.render('changepassword', { message: 'Old password is incorrect.' });
+            }
+
+            // Verify new password and confirm password
+            if (newPassword !== confirmPassword) {
+                console.error('New passwords do not match.');
+                return res.render('changepassword', { message: 'Passwords do not match.' });
+            }
+
+            // Hash the new password and update in the database
+            bcrypt.hash(newPassword, 10, (err, hashedPassword) => {
+                if (err) {
+                    console.error('Password hashing error:', err);
+                    return res.status(500).render('changepassword', { message: 'Error occurred. Please try again later.' });
+                }
+
+                // Debug: Log hashed password
+                console.log('Hashed password:', hashedPassword);
+
+                // Update the password in the database
+                db.query('UPDATE user_info SET password = ? WHERE email = ?', [hashedPassword, email], (error, results) => {
+                    if (error) {
+                        console.error('Database update error:', error);
+                        return res.status(500).render('changepassword', { message: 'Error occurred. Please try again later.' });
+                    }
+
+                    console.log('Password updated successfully.');
+                    return res.redirect('/login');
+                });
+            });
+        });
+    });
+});
+
 
 // when login is successful
 app.get("/index",function(req, res) {
