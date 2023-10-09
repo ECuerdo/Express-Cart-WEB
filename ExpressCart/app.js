@@ -138,6 +138,43 @@ app.post('/changepassword', (req, res) => {
     });
 });
 
+// Resetting Password using Username and Email from the database
+
+// Route to render the reset password form
+app.get('/resetpass', (req, res) => {
+    res.render('resetpass'); // Assuming you have a template engine set up
+});
+
+// Route to handle reset password form submission
+app.post('/resetpass', (req, res) => {
+    const { user_name, email, newPassword, confirmPassword } = req.body;
+
+    // Validate user_name and email
+    db.query('SELECT * FROM user_info WHERE user_name = ? AND email = ?', [user_name, email], (error, results) => {
+        if (error) throw error;
+
+        if (results.length === 0) {
+            return res.render('resetpass', { message: 'Invalid user_name or email.' });
+        }
+
+        // Verify new password and confirm password
+        if (newPassword !== confirmPassword) {
+            return res.render('resetpass', { message: 'Passwords do not match.' });
+        }
+
+        // Hash the new password
+        bcrypt.hash(newPassword, 8, (err, hashedPassword) => {
+            if (err) throw err;
+
+            // Update the password in the database
+            db.query('UPDATE user_info SET password = ? WHERE user_name = ? AND email = ?', [hashedPassword, user_name, email], (error, results) => {
+                if (error) throw error;
+
+                res.render('resetpass', { message: 'Password reset successfully.' });
+            });
+        });
+    });
+});
 
 // when login is successful
 app.get("/index",function(req, res) {

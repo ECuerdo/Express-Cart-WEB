@@ -8,7 +8,7 @@
     <!-- ===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- ===== CSS ===== -->
-    <link rel="stylesheet" href="/auth.css">
+    <link rel="stylesheet" href="/resetpass.css">
          
     <title>Reset Password Form</title> 
 </head>
@@ -19,22 +19,34 @@
             <!-- Forgot Pass Form -->
             <div class="form resetpass">
                 <span class="title">Reset Password</span>
-                <form action="#">
+                <form action="/resetpass" method="post">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" name="" required>
+                        <input type="text" placeholder="Enter your Username" name="user_name" required>
+                        <i class="uil uil-user"></i>
+                     </div>
+                    <div class="input-field">
+                        <input type="email" placeholder="Enter your Email" name="email" required>
                         <i class="uil uil-envelope icon"></i>
                      </div>
+                     <div class="input-field">
+                        <input type="password" id="password" class="password" name="newPassword" placeholder="Enter New Password" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
                     <div class="input-field">
-                        <input type="birthdate" placeholder="Enter BirthDate (mm/dd/yyyy)" name="" required>
-                        <i class="uil uil-calendar-alt icon"></i>
-                     </div>
-                    <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter New Password" name="" required>
+                        <input type="password" class="password" placeholder="Confirm Password" name="confirmPassword" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
+                    <div class="login-signup">
+                    <span class="text">Password Reseted?
+                        <a href="#" class="text" onclick="window.location.href='/login'">Login Now</a>
+                    </span>
+                    </div>
+                    {{#if message }}
+                        <h5 class="alert alert-danger mt-2">{{message}}</h5>
+                    {{/if}}
                     <div class="input-field button">
-                        <button type="submit" class="input-field button" onclick="window.location.href='/login'">Reset Pass</button>
+                        <button type="submit" class="input-field button">Reset Pass</button>
             
                     </div>
                 </form>
