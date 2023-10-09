@@ -227,27 +227,30 @@
 									<!-- <h4>Get in touch</h4> -->
 									<h3>Manage Information</h3>
 								</div>
-								<form class="form" method="post" action="mail/mail.php">
+								<form class="form" method="post" action="/settings">
 									<div class="row">
+										{{#if message }}
+                       						<h5 class="alert alert-danger mt-2">{{message}}</h5>
+                    					{{/if}}
 
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Username<span>*</span></label>
-												<input name="name" type="text" placeholder="">
+												<input name="user_name" type="text" id="user_name" placeholder="" required>
 											</div>
 										</div>
 
                                         <div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Address:<span>*</span></label>
-												<input name="name" type="text" placeholder="">
+												<input name="address" type="text" id="address" placeholder="">
 											</div>
 										</div>
 
                                         <div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Email:<span>*</span></label>
-												<input name="name" type="text" placeholder="">
+												<input name="email" type="email" id="email" placeholder="">
 											</div>
 										</div>
 
@@ -255,7 +258,7 @@
                                         <div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Contact Number: <span>*</span></label>
-												<input name="name" type="text" placeholder="">
+												<input name="contact_number" id="contact_number" type="number" placeholder="">
 											</div>
 										</div>
 
@@ -264,8 +267,6 @@
 												<button type="submit" class="btn">Save Changes</button>
 											</div>
 										</div>
-                                      
-
 									</div>
                                     <!-- row -->
 								</form>

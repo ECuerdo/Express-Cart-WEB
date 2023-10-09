@@ -64,6 +64,10 @@ app.post("/auth/login", encoder, function (req, res) {
         }
     });
 });
+// when login is successful
+app.get("/index",function(req, res) {
+    res.sendFile(__dirname + "/index.hbs");
+});
 
 //change password
 app.get('/changepassword', (req, res) => {
@@ -176,9 +180,47 @@ app.post('/resetpass', (req, res) => {
     });
 });
 
-// when login is successful
-app.get("/index",function(req, res) {
-    res.sendFile(__dirname + "/index.hbs");
+
+//Manage Information (Changing and Setting Account Information)
+// Route to render the account info form
+app.get('/settings', (req, res) => {
+    // Fetch user info based on user_name (assuming user_name is stored in session or cookie)
+    const user_name = req.user_name; // Example, get user_name from session or cookie
+
+    db.query('SELECT * FROM user_info WHERE user_name = ?', [user_name], (error, results) => {
+        if (error) throw error;
+
+        if (results.length === 0) {
+            return res.render('settings', { message: 'User not found.' });
+        }
+
+        const user = results[0];
+        res.render('settings', { user });
+    });
+});
+
+// Route to handle account info form submission
+app.post('/settings', (req, res) => {
+    const { user_name, email, address, contact_number } = req.body;
+
+    // Verify user_name
+    db.query('SELECT * FROM user_info WHERE user_name = ?', [user_name], (error, results) => {
+        if (error) throw error;
+
+        if (results.length === 0) {
+            return res.render('settings', { message: 'Invalid user_name.' });
+        }
+
+        // Update email, address, and contact number
+        db.query('UPDATE user_info SET email = ?, address = ?, contact_number = ? WHERE user_name = ?',
+            [email, address, contact_number, user_name],
+            (error, results) => {
+                if (error) throw error;
+
+                res.render('settings', { message: 'Account information updated successfully.', user: { user_name, email, address, contact_number } });
+            }
+        );
+    });
 });
 
 // Port
