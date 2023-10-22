@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const session = require('express-session');
 const mysql = require("mysql");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
@@ -9,6 +10,13 @@ const encoder = bodyParser.urlencoded();
 dotenv.config({ path: "./.env" });
 
 const app = express();
+
+// Use express-session middleware for managing sessions
+app.use(session({
+    secret: 'Pk234sSuVo1', 
+    resave: false,
+    saveUninitialized: true
+}));
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -43,7 +51,7 @@ app.get("/index",function(req, res) {
 });
 
 // Log in
-app.post("/auth/login", encoder, function (req, res) {
+app.post("/auth/login", function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
     db.query("SELECT * FROM user_info WHERE email = ?", [email], function (error, result) {
@@ -53,6 +61,8 @@ app.post("/auth/login", encoder, function (req, res) {
             if (result.length > 0) {
                 bcrypt.compare(password, result[0].password, (err, isMatch) => {
                     if (isMatch) {
+                        // Store user information in session
+                        req.session.user = { id: result[0].id, email: result[0].email };
                         res.redirect("/index");
                     } else {
                         res.render("login", { message: "Incorrect email or password" });
@@ -64,9 +74,35 @@ app.post("/auth/login", encoder, function (req, res) {
         }
     });
 });
-// when login is successful
-app.get("/index",function(req, res) {
-    res.sendFile(__dirname + "/index.hbs");
+
+// When login is successful
+app.get("/index", function(req, res) {
+    // Check if the user is logged in
+    if (req.session.user) {
+        // User is logged in, render the index view with user data
+        res.render("index", { user: req.session.user });
+    } else {
+        // User is not logged in, redirect them to the login page
+        res.redirect("/login");
+    }
+});
+
+// Log out
+app.get('/login', (req, res) => {
+    // Check if the user is logged in
+    if (req.session.user) {
+        // Clear the session data (logout the user)
+        req.session.destroy((err) => {
+            if (err) {
+                res.status(500).json({ error: 'Error logging out' });
+            } else {
+                res.render("login", { message: 'Logged out successfully' });
+            }
+        });
+    } else {
+        // If the user is not logged in, send an error response
+        res.status(401).json({ error: 'User not logged in' });
+    }
 });
 
 //change password
