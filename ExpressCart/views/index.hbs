@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="/niceselect.css">
 	<!-- Animate CSS -->
     <link rel="stylesheet" href="/animate.css">
-	
+	<!-- Items StyleSheet -->
+	<link rel="stylesheet" href="/items.css">
 	<!-- shop StyleSheet -->
 	<link rel="stylesheet" href="/reset.css">
 	<link rel="stylesheet" href="/style.css">
@@ -261,46 +262,26 @@
 	</section>
 	<!--/ End Slider Area -->
 	
-	<!-- Start Small Banner  -->
-	<section class="small-banner section">
-		<!-- 
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="single-banner">
-						<img src="https://via.placeholder.com/600x370" alt="#">
-						<div class="content">
-							<p>Man's Collectons</p>
-							<h3>Summer travel <br> collection</h3>
-							<a href="#">Discover Now</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="single-banner">
-						<img src="https://via.placeholder.com/600x370" alt="#">
-						<div class="content">
-							<p>Bag Collectons</p>
-							<h3>Awesome Bag <br> 2020</h3>
-							<a href="#">Shop Now</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-12">
-					<div class="single-banner tab-height">
-						<img src="https://via.placeholder.com/600x370" alt="#">
-						<div class="content">
-							<p>Flash Sale</p>
-							<h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-							<a href="#">Discover Now</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> --> 
-	</section>
-	<!-- End Small Banner -->
-	
+	<!-- Start Items For Sale -->
+	<main>
+        <section id="item-form">
+            <h2>Post an Item</h2>
+            <form id="post-item-form">
+                <label for="item-name">Item Name</label>
+                <input type="text" id="item-name" required>
+                <label for="item-price">Item Price</label>
+                <input type="number" id="item-price" required>
+                <button type="submit">Post Item</button>
+            </form>
+        </section>
+        <section id="item-list">
+            <h2>Available Items</h2>
+            <ul id="items">
+                <!-- Item list will be populated here -->
+            </ul>
+        </section>
+    </main>
+	<!-- End Items For Sale -->
 	
 	
 	<!-- Start Footer Area -->
@@ -399,7 +380,8 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
- 
+	<!-- Items -->
+	<script src="/items.js"></script>
 	<!-- Jquery -->
     <script src="/jquery.min.js"></script>
     <script src="/jquery-migrate-3.0.0.js"></script>
@@ -452,8 +434,8 @@
 
     // Function to add a product to the products list
     function addProductToPage(product) {
-        const productElement = document.createElement('div');
-        productElement.classList.add('product');
+        const productElement = document.createElement('ul');
+        productElement.classList.add('items');
         productElement.innerHTML = `
             <img src="${URL.createObjectURL(product.image)}" alt="${product.name}">
             <h3>${product.name}</h3>
