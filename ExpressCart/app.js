@@ -50,6 +50,7 @@ app.get("/index",function(req, res) {
     res.sendFile(__dirname + "/index.hbs");
 });
 
+
 // Log in
 app.post("/auth/login", function (req, res) {
     var email = req.body.email;
