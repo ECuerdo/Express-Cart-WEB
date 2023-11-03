@@ -1,47 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const cartItems = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
+let listCart = [];
+function checkCart(){
+        var cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('listCart='));
+        if(cookieValue){
+            listCart = JSON.parse(cookieValue.split('=')[1]);
+        }
+}
+checkCart();
+addCartToHTML();
+function addCartToHTML(){
+    // clear data default
+    let listCartHTML = document.querySelector('.returnCart .list');
+    listCartHTML.innerHTML = '';
 
-    let cart = [];
-    let total = 0;
-
-    // Function to update the cart display
-    function updateCart() {
-        cartItems.innerHTML = "";
-        total = 0;
-
-        cart.forEach((item) => {
-            const cartItem = document.createElement("li");
-            cartItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-            cartItems.appendChild(cartItem);
-            total += item.price;
-        });
-
-        cartTotal.textContent = `$${total.toFixed(2)}`;
+    let totalQuantityHTML = document.querySelector('.totalQuantity');
+    let totalPriceHTML = document.querySelector('.totalPrice');
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    // if has product in Cart
+    if(listCart){
+        listCart.forEach(product => {
+            if(product){
+                let newCart = document.createElement('div');
+                newCart.classList.add('item');
+                newCart.innerHTML = 
+                    `<img src="${product.image}">
+                    <div class="info">
+                        <div class="name">${product.name}</div>
+                        <div class="price">$${product.price}/1 product</div>
+                    </div>
+                    <div class="quantity">${product.quantity}</div>
+                    <div class="returnPrice">$${product.price * product.quantity}</div>`;
+                listCartHTML.appendChild(newCart);
+                totalQuantity = totalQuantity + product.quantity;
+                totalPrice = totalPrice + (product.price * product.quantity);
+            }
+        })
     }
-
-    // Event listener to add items to the cart
-    document.getElementById("post-item-form").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const itemName = document.getElementById("item-name").value;
-        const itemPrice = parseFloat(document.getElementById("item-price").value);
-
-        if (itemName && !isNaN(itemPrice) && itemPrice > 0) {
-            cart.push({ name: itemName, price: itemPrice });
-            updateCart();
-        }
-
-        document.getElementById("item-name").value = "";
-        document.getElementById("item-price").value = "";
-    });
-
-    // Event listener for removing items from the cart (if you want this functionality)
-    cartItems.addEventListener("click", function (e) {
-        if (e.target && e.target.nodeName === "LI") {
-            const index = Array.from(cartItems.children).indexOf(e.target);
-            cart.splice(index, 1);
-            updateCart();
-        }
-    });
-});
+    totalQuantityHTML.innerText = totalQuantity;
+    totalPriceHTML.innerText = '$' + totalPrice;
+}
