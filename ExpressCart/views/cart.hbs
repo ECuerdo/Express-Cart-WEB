@@ -139,21 +139,22 @@
 
         
         <div class="returnCart">
-            <h1>Your Cart</h1>
-            <div class="list">
+    		<h1>Your Cart</h1>
+   			<div class="list">
+        		{{#each listCart}}
+        		<div class="item">
+            		<img src="{{this.image}}">
+            		<div class="info">
+                		<div class="name">{{this.name}}</div>
+                		<div class="price">$ {{this.price}}/1 product</div>
+            		</div>
+            		<div class="quantity">{{this.quantity}}</div>
+            		<div class="returnPrice">$ {{this.price this.quantity}}</div>
+        		</div>
+        		{{/each}}
+    		</div>
+		</div>
 
-                <div class="item">
-                    <img src="/images/item1.png">
-                    <div class="info">
-                        <div class="name">PRODUCT 1</div>
-                        <div class="price">$22/1 product</div>
-                    </div>
-                    <div class="quantity">5</div>
-                    <div class="returnPrice">$433.3</div>
-                </div>
-
-            </div>
-        </div>
 
 
         <div class="right">
