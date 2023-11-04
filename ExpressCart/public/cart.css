@@ -86,7 +86,7 @@ header .totalQuantity{
     width: 400px;
     max-width: 80vw;
     height: 100vh;
-    background-color: #0E0F11;
+    background-color: #ffffff;
     top: 0px;
     right: -100%;
     display: grid;
@@ -97,7 +97,7 @@ header .totalQuantity{
 
 .cart .buttons .checkout{
     background-color: #E8BC0E;
-    color: #000;
+    color: #ffffff;
 }
 .cart h2{
     color: #E8BC0E;
@@ -149,7 +149,7 @@ header .totalQuantity{
     text-align: center;
 }
 .cart .buttons div{
-    background-color: #000;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,13 +170,13 @@ header .totalQuantity{
     background-color: #FF8A00;
     border-radius: 20px;
     padding: 40px;
-    color: #fff;
+    color: #ffffff;
 }
 .checkoutLayout .right .form{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    border-bottom: 1px solid #7a7fe2;
+    border-bottom: 1px solid #ffffff;
     padding-bottom: 20px;
 }
 .checkoutLayout .form h1,
@@ -194,7 +194,7 @@ header .totalQuantity{
     margin-top: 10px;
     border:none;
     background-color: #ffffff;
-    color: #fff;
+    color: #000000;
 }
 .checkoutLayout .right .return .row{
     display: flex;
