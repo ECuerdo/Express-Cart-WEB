@@ -4,20 +4,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/cart.css">
+    	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/bootstrap.css">
+	<!-- Magnific Popup -->
+    <link rel="stylesheet" href="/magnific-popup.min.css">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="/font-awesome.css">
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="/jquery.fancybox.min.css">
+	<!-- Themify Icons -->
+    <link rel="stylesheet" href="/themify-icons.css">
+	<!-- Nice Select CSS -->
+    <link rel="stylesheet" href="/niceselect.css">
+	<!-- Animate CSS -->
+    <link rel="stylesheet" href="/animate.css">
+	<!-- shop StyleSheet -->
+	<link rel="stylesheet" href="/reset.css">
+	<link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/responsive.css">
+	<link rel="stylesheet" href="/myStyle.css">
 </head>
 <body>
+	<!-- Header -->
+	<header class="header shop">
+		<!-- Topbar -->
+		<div class="topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-12">
+						<!-- Top Left -->
+						<div class="top-left">
+							<ul class="list-main">
+								<li><i class="ti-email"></i> support@express-cart.org</li>
+							</ul> 
+						</div>
+						<!--/ End Top Left -->
+					</div>
+					<div class="col-lg-8 col-md-12 col-12">
+						<!-- Top Right -->
+						<div class="right-content">
+							<ul class="list-main">
+								<li class="socials"><i class=""></i> <a href="/login" id="logout-link" >Log out</a></li>
+								<li class="socials"><i class="ti-user"></i> <a href="/settings">Your Account</a></li>
+							</ul>
+						</div>
+						<!-- End Top Right -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Topbar -->
+		<div class="middle-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-4 col-12">
+						<!-- Logo -->
+						<div class="logo">
+						<a href="/index">
+							<h4>
+								Express Cart
+							</h4>
+						</a>
+							<!-- <a href="index"><img src="images/logo1.png" alt="logo"></a> -->
+						</div>
+						<!--/ End Logo -->
+						<!-- Search Form -->
+						<div class="search-top">
+							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+							<!-- Search Form -->
+							<div class="search-top">
+								<form class="search-form">
+									<input type="text" placeholder="Search here..." name="search">
+									<button value="search" type="submit"><i class="ti-search"></i></button>
+								</form>
+							</div>
+							<!--/ End Search Form -->
+						</div>
+						<!--/ End Search Form -->
+						<div class="mobile-nav"></div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-12">
+						<div class="search-bar-top">
+							<div class="search-bar">
+								<select>
+									<option selected="selected">Categories</option>
+								</select>
+								<form>
+									<input name="search" placeholder="Search Here..." type="search">
+									<button class="btnn"><i class="ti-search"></i></button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-12">
+						<div class="right-bar">
+							<!-- Search Form -->
+							<!-- <div class="single-bar">
+								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+							</div>
+							<div class="single-bar">
+								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+							</div> 
+								<div class="single-bar shopping">
+								  <a href="/cart" class="single-icon"><i class="ti-bag"></i></a>
+                                  -->
+								<!-- Shopping Item -->
+
+								<!--/ End Shopping Item -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Header Inner -->
+		<div class="header-inner">
+        <div class="container">
+            <div class="cat-nav-head">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="all-category">
+                            
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Header Inner -->
+	</header>
+	<!--/ End Header -->    
     
 <div class="container">
     <div class="checkoutLayout">
 
         
         <div class="returnCart">
-            <a href="/index">keep shopping</a>
-            <h1>List Product in Cart</h1>
+            <h1>Your Cart</h1>
             <div class="list">
 
                 <div class="item">
-                    <img src="/images/1.webp">
+                    <img src="/images/item1.png">
                     <div class="info">
                         <div class="name">PRODUCT 1</div>
                         <div class="price">$22/1 product</div>
@@ -49,21 +175,6 @@
                     <input type="text" name="address" id="address">
                 </div>
     
-                <div class="group">
-                    <label for="country">Country</label>
-                    <select name="country" id="country">
-                        <option value="">Choose..</option>
-                        <option value="">Kingdom</option>
-                    </select>
-                </div>
-    
-                <div class="group">
-                    <label for="city">City</label>
-                    <select name="city" id="city">
-                        <option value="">Choose..</option>
-                        <option value="">London</option>
-                    </select>
-                </div>
             </div>
             <div class="return">
                 <div class="row">
@@ -79,9 +190,123 @@
             </div>
     </div>
 </div>
+	<!-- Start Footer Area -->
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer about">
+							<div class="logo">
+								<a href="/index">
+									<h3 style="color: #fff;">
+										Express Cart
+									</h3>
+								</a>
+							</div>
+							<p class="text"> Streamline your shopping experience with Express-Cart we provide so fast! Letting you have a sustainable income. </p>
+							
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Information</h4>
+							<ul>
+								<li class="socials"><a href="/about">About Us</a></li>
+								<li class="socials"><a href="/about">Faq</a></li>
+								<li class="socials"><a href="/policy">Terms & Conditions</a></li>
+								<li class="socials"><a href="/contact">Contact Us</a></li>
+								<li class="socials"><a href="/contact">Help</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-2 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer links">
+							<h4>Customer Service</h4>
+							<ul>
+								<li class="socials"><a href="#">Payment Methods</a></li>
+								<li class="socials"><a href="#">Money-back</a></li>
+								<li class="socials"><a href="#">Returns</a></li>
+								<li class="socials"><a href="#">Shipping</a></li>
+								<li class="socials"><a href="/policy">Privacy Policy</a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Single Widget -->
+						<div class="single-footer social">
+							<h4>Get In Touch</h4>
+							<!-- Single Widget -->
+							<div class="contact">
+								<ul>
+									<li class="socials">Philippines</li>
+									<li class="socials">Pangasinan</li>
+									<li class="socials">support@express-cart.org</li>
+									<li class="socials">+6391234567890</li>
+								</ul>
+							</div>
+							<!-- End Single Widget -->
+							<ul>
+								<li class="socials"><a href="#"><i class="ti-facebook"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-linkedin"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-github"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-instagram"></i></a></li>
+							</ul>
+						</div>
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Footer Top -->
+		<div class="copyright">
+			<div class="container">
+				<div class="inner">
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<div class="left">
+								<p>Copyright © 2023 <a href="#" target="_blank">Express Cart</a>  -  All Rights Reserved.</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-12">
+							<!-- <div class="right">
+								<img src="images/payments.png" alt="#">
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /End Footer Area -->
 
 
 <script src="cart.js"></script>
+<!-- Jquery -->
+    <script src="/jquery.min.js"></script>
+    <script src="/jquery-migrate-3.0.0.js"></script>
+	<script src="/jquery-ui.min.js"></script>
+	<!-- Popper JS -->
+	<script src="/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="/bootstrap.min.js"></script>
+	<!-- Color JS -->
+	<script src="/colors.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="/magnific-popup.js"></script>
+	<!-- Nice Select JS -->
+	<script src="/nicesellect.js"></script>
+	<!-- Onepage Nav JS -->
+	<script src="/onepage-nav.min.js"></script>
+	<!-- Active JS -->
+	<script src="/active.js"></script>
 
 </body>
 </html>

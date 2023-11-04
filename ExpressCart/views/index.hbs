@@ -125,8 +125,8 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class=""></i> <a href="/login" id="logout-link" >Log out</a></li>
-								<li><i class="ti-user"></i> <a href="/settings">Your Account</a></li>
+								<li class="socials"><i class=""></i> <a href="/login" id="logout-link" >Log out</a></li>
+								<li class="socials"><i class="ti-user"></i> <a href="/settings">Your Account</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -231,26 +231,6 @@
 										<div class="button">
 											<a href="#" class="btn">Shop Now!</a>
 										</div>
-										 <div id="popupContainer" class="popup">
-											<div class="popup-content">
-												<span id="popupCloseButton" class="popup-close-button">&times;</span>
-												<h2>Add Product</h2>
-												<form id="productForm" enctype="multipart/form-data" class="form-container">
-													<label for="productName">Product Name:</label>
-													<input type="text" id="productName" name="productName" class="form-input" required>
-
-													<label for="productPrice">Product Price:</label>
-													<input type="number" id="productPrice" name="productPrice" step="0.01" class="form-input" required>
-
-													<label for="productImage">Product Image:</label>
-													<input type="file" id="productImage" name="productImage" accept="image/*" class="form-input" required><br><br>
-
-													<div class="button-container">
-														<button type="submit" class="add-button">SELL</button>
-													</div>
-												</form>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -272,7 +252,10 @@
                 <input type="text" id="item-name" required>
                 <label for="item-price">Item Price</label>
                 <input type="number" id="item-price" required>
+				<label for="productImage">Product Image:</label>
+				<input type="file" id="item-name" name="productImage" accept="image/*" class="form-input" required><br><br>
                 <button type="submit">Post Item</button>
+
             </form>
         </section>
         <section id="item-list">
@@ -310,11 +293,11 @@
 						<div class="single-footer links">
 							<h4>Information</h4>
 							<ul>
-								<li><a href="/about">About Us</a></li>
-								<li><a href="/about">Faq</a></li>
-								<li><a href="/policy">Terms & Conditions</a></li>
-								<li><a href="/contact">Contact Us</a></li>
-								<li><a href="/contact">Help</a></li>
+								<li class="socials"><a href="/about">About Us</a></li>
+								<li class="socials"><a href="/about">Faq</a></li>
+								<li class="socials"><a href="/policy">Terms & Conditions</a></li>
+								<li class="socials"><a href="/contact">Contact Us</a></li>
+								<li class="socials"><a href="/contact">Help</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -324,11 +307,11 @@
 						<div class="single-footer links">
 							<h4>Customer Service</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="/policy">Privacy Policy</a></li>
+								<li class="socials"><a href="#">Payment Methods</a></li>
+								<li class="socials"><a href="#">Money-back</a></li>
+								<li class="socials"><a href="#">Returns</a></li>
+								<li class="socials"><a href="#">Shipping</a></li>
+								<li class="socials"><a href="/policy">Privacy Policy</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -340,18 +323,18 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>Philippines</li>
-									<li>Pangasinan</li>
-									<li>support@express-cart.org</li>
-									<li>+6391234567890</li>
+									<li class="socials">Philippines</li>
+									<li class="socials">Pangasinan</li>
+									<li class="socials">support@express-cart.org</li>
+									<li class="socials">+6391234567890</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
 							<ul>
-								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-linkedin"></i></a></li>
-								<li><a href="#"><i class="ti-github"></i></a></li>
-								<li><a href="#"><i class="ti-instagram"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-facebook"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-linkedin"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-github"></i></a></li>
+								<li class="socials"><a href="#"><i class="ti-instagram"></i></a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -400,93 +383,5 @@
 	<script src="/onepage-nav.min.js"></script>
 	<!-- Active JS -->
 	<script src="/active.js"></script>
-	 <script>
-        function toggleMenu(element) {
-            var submenu = element.nextElementSibling;
-            submenu.classList.toggle("active");
-        }
-    </script>
-    	<script src="script.js"></script>
-	<style>
-        /* Style for the Add button */
-        #addButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #FF8A00;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 15px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-    </style>
-
-	<button id="addButton">+</button>
-
-    <script>
-       document.addEventListener('DOMContentLoaded', function() {
-    const popup = document.getElementById('popupContainer');
-    const closeButton = document.getElementById('popupCloseButton');
-    const productForm = document.getElementById('productForm');
-    const productsList = document.getElementById('productsList');
-
-    // Function to add a product to the products list
-    function addProductToPage(product) {
-        const productElement = document.createElement('ul');
-        productElement.classList.add('items');
-        productElement.innerHTML = `
-            <img src="${URL.createObjectURL(product.image)}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>Price: $${product.price.toFixed(2)}</p>
-        `;
-
-        productsList.appendChild(productElement);
-    }
-
-    // Event listener for the close button
-    closeButton.addEventListener('click', () => {
-        // Hide the pop-up
-        popup.style.display = 'none';
-    });
-
-    // Event listener for form submission
-    productForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Prevent the form from submitting
-
-        // Get the product name, price, and image file from the form
-        const productName = document.getElementById('productName').value;
-        const productPrice = document.getElementById('productPrice').value;
-        const productImage = document.getElementById('productImage').files[0]; // Get the first selected file
-
-        // Create a new product object with the data
-        const newProduct = {
-            name: productName,
-            price: parseFloat(productPrice),
-            image: productImage,
-        };
-
-        // You can handle the product data as needed (e.g., add to a list, send to a server, etc.)
-        // Here, we'll simply display the product on the front page using the addProductToPage function
-        addProductToPage(newProduct);
-
-        // Clear the form fields
-        document.getElementById('productName').value = '';
-        document.getElementById('productPrice').value = '';
-        document.getElementById('productImage').value = '';
-
-        // Close the pop-up
-        popup.style.display = 'none';
-    });
-
-    // Trigger the pop-up when your button is clicked
-    const addButton = document.getElementById('addButton'); // Replace with your button's actual ID
-    addButton.addEventListener('click', () => {
-        // Show the pop-up
-        popup.style.display = 'block';
-    });
-});
-    </script>
 </body>
 </html>
