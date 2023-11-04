@@ -4,6 +4,7 @@ const session = require('express-session');
 const mysql = require("mysql");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
+const multer = require('multer');
 const bodyParser = require("body-parser");
 const encoder = bodyParser.urlencoded();
 
@@ -42,6 +43,20 @@ db.connect((err) => {
     console.log("Connected to database...");
 })
 
+const storage = multer.diskStorage({
+    destination: './public/uploads/',
+    filename: function (req, file, callback) {
+        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 1000000 } // 1MB file size limit
+}).single('productImage');
+
+
+
 //Define Routes
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
@@ -50,6 +65,39 @@ app.get("/index",function(req, res) {
     res.sendFile(__dirname + "/index.hbs");
 });
 
+// Route for handling form submissions at /index
+app.post('/index', (req, res) => {
+    upload(req, res, (err) => {
+        if (err) {
+            res.status(500).send({ error: 'Error uploading file' });
+        } else {
+            const { itemName, itemPrice } = req.body;
+            const imagePath = '/uploads/' + req.file.filename;
+
+            const sql = 'INSERT INTO product_tb (product_name, product_price, product_img) VALUES (?, ?, ?)';
+            db.query(sql, [itemName, itemPrice, imagePath], (err, result) => {
+                if (err) {
+                    console.error('Error executing SQL query: ' + err.message);
+                    res.status(500).send({ error: 'Error saving item to the database' });
+                } else {
+                    res.status(200).send({ message: 'Item saved successfully', imagePath: imagePath });
+                }
+            });
+        }
+    });
+});
+
+// Route for fetching items from the database at /index
+app.get('/index', (req, res) => {
+    const sql = 'SELECT * FROM product_tb';
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.status(500).send({ error: 'Error fetching items from the database' });
+        } else {
+            res.status(200).send(result);
+        }
+    });
+});
 
 // Log in
 app.post("/auth/login", function (req, res) {
