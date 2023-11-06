@@ -19,27 +19,42 @@ function addCartToHTML(){
     let totalQuantity = 0;
     let totalPrice = 0;
     // if has product in Cart
-    if(listCart){
+    if (listCart) {
         listCart.forEach(product => {
-            if(product){
+            if (product) {
                 let newCart = document.createElement('div');
                 newCart.classList.add('item');
-                newCart.innerHTML = 
+                newCart.innerHTML =
                     `<img src="${product.image}">
                     <div class="info">
                         <div class="name">${product.name}</div>
-                        <div class="price">₱${product.price}/1 product</div>
+                        <div class="price">₱${product.price}</div>
                     </div>
                     <div class="quantity">${product.quantity}</div>
-                    <div class="returnPrice">₱${product.price * product.quantity}</div>`;
+                    <div class="returnPrice">₱${product.price * product.quantity}</div>
+                    <button class="removeButton">X</button>`;
                 listCartHTML.appendChild(newCart);
                 totalQuantity = totalQuantity + product.quantity;
                 totalPrice = totalPrice + (product.price * product.quantity);
             }
-        })
+        });
     }
+
     totalQuantityHTML.innerText = totalQuantity;
     totalPriceHTML.innerText = '₱' + totalPrice;
+
+    // Attach event listeners to remove buttons
+    const removeButtons = document.querySelectorAll('.item .removeButton');
+    removeButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // Remove the item from the listCart array
+            listCart.splice(index, 1);
+            // Update the cart in the cookie
+            document.cookie = `listCart=${JSON.stringify(listCart)}; path=/;`;
+            // Update the cart display
+            addCartToHTML();
+        });
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
