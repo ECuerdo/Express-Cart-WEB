@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Create a list item element to display the added item
                 const listItem = document.createElement("li");
                 const itemHTML = `
-                    <strong>${itemName}</strong> - $${itemPrice}
+                    <strong>${itemName}</strong> - ₱${itemPrice}
                     <img src="${data.imagePath}" alt="${itemName}" style="max-width: 100px; max-height: 100px;">
                     <button class="add-to-cart-btn" data-id="${data.itemId}" data-name="${itemName}" data-price="${itemPrice}" data-image="${data.imagePath}">Add to Cart</button>
                 `;
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
             items.forEach(item => {
                 const listItem = document.createElement("li");
                 const itemHTML = `
-                    <strong>${item.name}</strong> - $${item.price}
+                    <strong>${item.name}</strong> - ₱${item.price}
                     <img src="${item.image}" alt="${item.name}" style="max-width: 100px; max-height: 100px;">
                     <button class="add-to-cart-btn" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-image="${item.image}">Add to Cart</button>
                 `;
